@@ -1,29 +1,21 @@
-
-import React from 'react';
-import ContactCard from './ContactCard';
+import React from "react";
+import ContactCard from "./ContactCard";
 
 const ContactList = (props) => {
-  // Define deleteContactHandler
-  const deleteContactHandler = (id) => {
-    props.getContactId(id);  // Assuming this function is passed from the parent component
-  };
-  const contacts=[{
-    id:"1",
-    "name":"Dipesh",
-    "email":"cs@gmail.com",
+  console.log(props);
 
-  },
-];
-  const renderContactList = contacts.map((contact) => {
+  const deleteConactHandler = (id) => {
+    props.getContactId(id);
+  };
+  const renderContactList = props.contacts.map((contact) => {
     return (
       <ContactCard
         contact={contact}
-        clickHandler={() => deleteContactHandler(contact.id)} // Passing the handler
+        clickHander={deleteConactHandler}
         key={contact.id}
       />
     );
   });
-
   return <div className="ui celled list">{renderContactList}</div>;
 };
 
